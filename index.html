@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#15120f">
+
+    <title>Ama Paellas | Cardápio Digital</title>
+
+    <meta name="description"
+        content="Confira o cardápio digital da Ama Paellas, em Porto Alegre. Escolha seus favoritos e faça seu pedido.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">
+            <span class="logo-icon">A</span>
+            <span>AMA <small>PAELLAS</small></span>
+        </a>
+
+        <nav class="navigation">
+            <a href="#inicio">Início</a>
+            <a href="#cardapio">Cardápio</a>
+            <a href="#sobre">Sobre nós</a>
+        </nav>
+
+        <button class="cart-button" id="open-cart">
+            🛒 <span class="cart-label">Meu pedido</span>
+            <span id="cart-count">0</span>
+        </button>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <span class="eyebrow">AMA PAELLAS · PORTO ALEGRE</span>
+
+                <h1>Seu próximo<br>
+                    <span>favorito</span> está aqui.
+                </h1>
+
+                <p>
+                    Sabor de verdade, ingredientes selecionados
+                    e aquele capricho em cada pedido.
+                </p>
+
+                <a href="#cardapio" class="primary-button">
+                    Explorar cardápio <span>↗</span>
+                </a>
+
+                <div class="hero-info">
+                    <div>
+                        <strong>Feito com carinho</strong>
+                        <small>Qualidade em cada detalhe</small>
+                    </div>
+                    <div>
+                        <strong>Porto Alegre</strong>
+                        <small>Rio Grande do Sul</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img
+                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1100&q=85"
+                    alt="Hambúrguer artesanal com queijo e salada">
+                <div class="image-badge">
+                    <span>AMA</span>
+                    <strong>Uma experiência<br>de sabor.</strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="cardapio">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">ESCOLHA O SEU FAVORITO</span>
+                    <h2>Nosso cardápio<span>.</span></h2>
+                    <p>Descubra sabores preparados para deixar seu dia melhor.</p>
+                </div>
+            </div>
+
+            <div class="search-area">
+                <label class="search-box">
+                    <span>⌕</span>
+                    <input type="search" id="search"
+                        placeholder="Buscar no cardápio...">
+                </label>
+            </div>
+
+            <div class="categories" id="categories">
+                <button class="category active" data-category="todos">
+                    Todos
+                </button>
+                <button class="category" data-category="hamburgueres">
+                    🍔 Hambúrgueres
+                </button>
+                <button class="category" data-category="acompanhamentos">
+                    🍟 Acompanhamentos
+                </button>
+                <button class="category" data-category="bebidas">
+                    🥤 Bebidas
+                </button>
+                <button class="category" data-category="sobremesas">
+                    🍰 Sobremesas
+                </button>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                <!-- Os produtos serão inseridos pelo JavaScript. -->
+            </div>
+
+            <p class="empty-message" id="empty-message" hidden>
+                Nenhum produto encontrado. Tente outra busca.
+            </p>
+        </section>
+
+        <section class="about-section" id="sobre">
+            <div>
+                <span class="eyebrow">MAIS QUE UMA REFEIÇÃO</span>
+                <h2>O sabor está<br>nos detalhes.</h2>
+            </div>
+            <p>
+                Na Ama Paellas, cada pedido merece atenção especial.
+                Explore nosso cardápio, escolha seus produtos favoritos
+                e prepare-se para uma experiência deliciosa.
+            </p>
+        </section>
+
+        <section class="contact-section">
+            <div>
+                <span class="eyebrow">BATEU A FOME?</span>
+                <h2>Seu pedido começa aqui.</h2>
+                <p>Monte seu pedido e envie diretamente pelo WhatsApp.</p>
+            </div>
+
+            <button class="primary-button" id="contact-button">
+                Fazer meu pedido ↗
+            </button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="#inicio" class="logo">
+            <span class="logo-icon">A</span>
+            <span>AMA <small>PAELLAS</small></span>
+        </a>
+
+        <p>© <span id="year"></span> Ama Paellas. Todos os direitos reservados.</p>
+        <a href="#cardapio">Voltar ao cardápio ↑</a>
+    </footer>
+
+    <!-- Painel do carrinho -->
+    <div class="modal-overlay" id="cart-modal" hidden>
+        <section class="cart-panel" role="dialog"
+            aria-modal="true" aria-labelledby="cart-title">
+
+            <div class="cart-header">
+                <div>
+                    <span class="eyebrow">SEU PEDIDO</span>
+                    <h2 id="cart-title">Minha sacola</h2>
+                </div>
+                <button class="close-button" id="close-cart"
+                    aria-label="Fechar carrinho">✕</button>
+            </div>
+
+            <div id="cart-items" class="cart-items"></div>
+
+            <div class="cart-total">
+                <span>Total</span>
+                <strong id="cart-total">R$ 0,00</strong>
+            </div>
+
+            <label class="observation-label" for="observation">
+                Observações do pedido
+            </label>
+            <textarea id="observation"
+                placeholder="Ex.: sem cebola, ponto da carne..."
+                rows="3"></textarea>
+
+            <button class="primary-button checkout-button" id="checkout">
+                Finalizar pelo WhatsApp ↗
+            </button>
+
+            <p class="cart-disclaimer">
+                Confira os itens e os valores antes de enviar.
+                A confirmação do pedido será feita pelo estabelecimento.
+            </p>
+        </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
